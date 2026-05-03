@@ -16,5 +16,6 @@ python3 setup.py
 2. Build the image and start the container:
 
 ```bash
-docker-compose up -d --build
+docker-compose up -d --build # this will not work if you did not run the script first -> logical error...
 ```
+>>> you either provide the whole project in full or  provide single script that wraps it all. everything in between makes you look unprofessional.
