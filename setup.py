@@ -1,13 +1,14 @@
 import sys
 
 url = input("Enter main url: ").strip()
-if not url: sys.exit("Error: url cant be empty")
+if not url: sys.exit("Error: url cant be empty") # why exit if you need to re-run this ? why not loop ?
 
 subdomains = ['test', 'beta', 'dev', 'staging', 'api']
 
 subs = "\n".join([f"        server {s}.{url};" for s in subdomains])
 hosts = "\n".join([f"      - '{s}.{url}:127.0.0.1'" for s in subdomains])
 
+# why not use whole template and insert the values inside ?
 conf = f"""events {{
     worker_connections 1024;
 }}
@@ -24,7 +25,7 @@ http {{
 
 open("nginx.conf", "w").write(conf)
 print("nginx.conf generated.")
-
+# this was not requested
 compose = f"""services:
   web:
     build: .
